@@ -1,0 +1,120 @@
+{
+  "purchases": [
+    {
+      "id": "ecad4b36-54bf-4754-977a-fbb93018dbc3",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "vendorName": "Muhammad Ehsaan",
+      "productType": "Boneless Meat",
+      "quantity": 10,
+      "unit": "KG",
+      "ratePerKg": 1200,
+      "paidAmount": 12000,
+      "totalAmount": 12000,
+      "purchaseDate": "2026-04-13T00:00:00.000Z",
+      "notes": "",
+      "createdAt": "2026-04-13T11:29:37.118Z",
+      "updatedAt": "2026-04-13T11:29:37.118Z"
+    },
+    {
+      "id": "a2054d47-4936-4003-bb86-77e9897afdfd",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "vendorName": "Muhammad Ehsaan",
+      "productType": "Live Chicken",
+      "quantity": 12,
+      "unit": "KG",
+      "ratePerKg": 1200,
+      "paidAmount": 12000,
+      "totalAmount": 14400,
+      "purchaseDate": "2026-04-13T00:00:00.000Z",
+      "notes": "",
+      "createdAt": "2026-04-13T10:57:21.990Z",
+      "updatedAt": "2026-04-13T10:57:21.990Z"
+    }
+  ],
+  "sales": [
+    {
+      "id": "97b494b6-267a-442a-9c5d-8e11c7427364",
+      "customerId": "874d2467-1dba-47c1-ae5a-8f7ff019753e",
+      "customerName": "Muhammad Ehsaan",
+      "productType": "Boneless Meat",
+      "quantity": 10,
+      "unit": "KG",
+      "ratePerKg": 1500,
+      "totalAmount": 15000,
+      "paymentType": "CREDIT",
+      "saleDate": "2026-04-13T00:00:00.000Z",
+      "notes": "",
+      "createdAt": "2026-04-13T11:30:21.509Z",
+      "updatedAt": "2026-04-13T11:30:21.509Z"
+    },
+    {
+      "id": "5a1c753c-91ab-4c6e-9e0b-d7bac0fb6758",
+      "customerId": "874d2467-1dba-47c1-ae5a-8f7ff019753e",
+      "customerName": "Muhammad Ehsaan",
+      "productType": "Live Chicken",
+      "quantity": 10,
+      "unit": "KG",
+      "ratePerKg": 1400,
+      "totalAmount": 14000,
+      "paymentType": "CREDIT",
+      "saleDate": "2026-04-13T00:00:00.000Z",
+      "notes": "",
+      "createdAt": "2026-04-13T10:57:51.079Z",
+      "updatedAt": "2026-04-13T10:57:51.079Z"
+    }
+  ],
+  "rates": [
+    {
+      "id": "5a0cef59-1569-4339-8458-760f001c390a",
+      "liveRate": 1200,
+      "boneMeatRate": 500,
+      "bonelessRate": 1500,
+      "effectiveDate": "2026-04-13T00:00:00.000Z",
+      "updatedBy": "Admin",
+      "notes": "",
+      "createdAt": "2026-04-13T11:31:40.953Z",
+      "updatedAt": "2026-04-13T11:31:40.953Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "71e26901-4a4f-414c-89c3-5a1877585516",
+      "expenseType": "Utility",
+      "title": "ghar ka bill",
+      "expenseDate": "2026-04-13T00:00:00.000Z",
+      "amount": 50000,
+      "reference": "",
+      "paymentMethod": "Online Transfer",
+      "notes": "pay kya ha",
+      "createdAt": "2026-04-13T11:32:59.335Z",
+      "updatedAt": "2026-04-13T11:32:59.335Z"
+    },
+    {
+      "id": "fb7f6e29-d307-49eb-86e9-7f952c82fd2f",
+      "expenseType": "Shop Expense",
+      "title": "shop rent",
+      "expenseDate": "2026-04-13T00:00:00.000Z",
+      "amount": 10000,
+      "reference": "",
+      "paymentMethod": "Cash",
+      "notes": "",
+      "createdAt": "2026-04-13T11:32:18.995Z",
+      "updatedAt": "2026-04-13T11:32:18.995Z"
+    }
+  ],
+  "workers": [
+    {
+      "id": "8f146306-e37a-4003-9f5a-6b5ed348f8e1",
+      "name": "Muhammad Ehsaan",
+      "phone": "03147779389",
+      "designation": "worker",
+      "salaryType": "Monthly",
+      "salaryAmount": 30000,
+      "joiningDate": "2026-04-13T00:00:00.000Z",
+      "address": "Dhoke seydan girga road muhallah Qurashiabad  chak jalal din",
+      "notes": "",
+      "createdAt": "2026-04-13T11:33:27.748Z",
+      "updatedAt": "2026-04-13T11:33:27.748Z"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "customers": [
+    {
+      "id": "874d2467-1dba-47c1-ae5a-8f7ff019753e",
+      "name": "Muhammad Ehsaan",
+      "phone": "03147779389",
+      "saleType": "CREDIT",
+      "saleDate": "2026-04-13T00:00:00.000Z",
+      "address": "Dhoke seydan girga road muhallah Qurashiabad  chak jalal din",
+      "notes": "",
+      "createdAt": "2026-04-13T08:28:50.101Z",
+      "updatedAt": "2026-04-13T11:44:01.550Z"
+    },
+    {
+      "id": "20f274bd-e9e9-4f15-915e-3ba83851e3ab",
+      "name": "Muhammad Ehsaan",
+      "phone": "03147779389",
+      "saleType": "CASH",
+      "saleDate": "2026-04-13T00:00:00.000Z",
+      "address": "Dhoke seydan girga road muhallah Qurashiabad  chak jalal din",
+      "notes": "xyz",
+      "createdAt": "2026-04-13T08:28:06.615Z",
+      "updatedAt": "2026-04-13T08:28:06.615Z"
+    }
+  ],
+  "ledgerEntries": [
+    {
+      "id": "673c820f-6e06-4d8f-98a2-a1271b5826fa",
+      "customerId": "874d2467-1dba-47c1-ae5a-8f7ff019753e",
+      "description": "paid",
+      "entryType": "DEBIT",
+      "amount": 15000,
+      "notes": "",
+      "entryDate": "2026-04-13T11:30:57.479Z",
+      "createdAt": "2026-04-13T11:30:57.479Z",
+      "updatedAt": "2026-04-13T11:30:57.479Z"
+    },
+    {
+      "id": "ae6bc69b-2033-4a1b-9324-6226ce9f8ba4",
+      "customerId": "874d2467-1dba-47c1-ae5a-8f7ff019753e",
+      "description": "Boneless Meat sale",
+      "entryType": "DEBIT",
+      "amount": 15000,
+      "notes": "",
+      "entryDate": "2026-04-13T11:30:21.509Z",
+      "createdAt": "2026-04-13T11:30:21.509Z",
+      "updatedAt": "2026-04-13T11:30:21.509Z"
+    },
+    {
+      "id": "82c10a03-edf5-4c73-9a0d-7e9f3eda2590",
+      "customerId": "874d2467-1dba-47c1-ae5a-8f7ff019753e",
+      "description": "Live Chicken sale",
+      "entryType": "DEBIT",
+      "amount": 14000,
+      "notes": "",
+      "entryDate": "2026-04-13T10:57:51.079Z",
+      "createdAt": "2026-04-13T10:57:51.079Z",
+      "updatedAt": "2026-04-13T10:57:51.079Z"
+    }
+  ]
+}

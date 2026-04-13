@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  STAFF_USER
+}
+
+enum InventoryKind {
+  LIVE
+  MEAT
+}
+
+enum SaleType {
+  CASH
+  NET_SALE
+  CREDIT
+}
+
+enum LedgerEntryType {
+  DEBIT
+  CREDIT
+}
+
+enum VendorLedgerEntryType {
+  PURCHASE
+  PAYMENT
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(STAFF_USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model InventoryEntry {
+  id            String        @id @default(cuid())
+  inventoryKind InventoryKind
+  vendorName    String?
+  productType   String
+  purchasePrice Float
+  salePrice     Float
+  stockQuantity Float
+  stockUnit     String
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([inventoryKind, updatedAt])
+  @@index([vendorName])
+  @@index([productType])
+}
+
+model Customer {
+  id             String               @id @default(cuid())
+  name           String
+  phone          String?
+  saleType       SaleType             @default(CASH)
+  saleDate       DateTime             @default(now())
+  address        String?
+  notes          String?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  ledgerEntries  CustomerLedgerEntry[]
+
+  @@index([name])
+  @@index([saleType, updatedAt])
+}
+
+model CustomerLedgerEntry {
+  id          String          @id @default(cuid())
+  customerId  String
+  customer    Customer        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  entryType   LedgerEntryType
+  description String
+  amount      Float
+  notes       String?
+  entryDate   DateTime        @default(now())
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([customerId, entryDate])
+  @@index([entryType])
+}
+
+model Vendor {
+  id             String              @id @default(cuid())
+  name           String              @unique
+  phone          String?
+  address        String?
+  ratePerKg      Float               @default(0)
+  rateAgreementPerDay Float          @default(0)
+  openingBalance Float               @default(0)
+  notes          String?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  ledgerEntries  VendorLedgerEntry[]
+
+  @@index([updatedAt])
+}
+
+model VendorLedgerEntry {
+  id          String               @id @default(cuid())
+  vendorId    String
+  vendor      Vendor               @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  entryType   VendorLedgerEntryType
+  description String
+  amount      Float
+  notes       String?
+  entryDate   DateTime             @default(now())
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  @@index([vendorId, entryDate])
+  @@index([entryType])
+}

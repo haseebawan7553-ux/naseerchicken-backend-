@@ -1,0 +1,72 @@
+{
+  "vendors": [
+    {
+      "id": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "name": "Muhammad Ehsaan",
+      "phone": "03147779389",
+      "address": "Dhoke seydan girga road muhallah Qurashiabad  chak jalal din",
+      "ratePerKg": 1200,
+      "openingBalance": 100,
+      "notes": "",
+      "createdAt": "2026-04-13T07:42:24.862Z",
+      "updatedAt": "2026-04-13T11:29:37.118Z"
+    }
+  ],
+  "ledgerEntries": [
+    {
+      "id": "f8cb150d-b65c-4ae2-a888-2a85e2f8f294",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "description": "Boneless Meat purchase",
+      "entryType": "PURCHASE",
+      "amount": 12000,
+      "notes": "",
+      "entryDate": "2026-04-13T11:29:37.118Z",
+      "createdAt": "2026-04-13T11:29:37.118Z",
+      "updatedAt": "2026-04-13T11:29:37.118Z"
+    },
+    {
+      "id": "78f26c9e-a3d0-4078-a250-32ef03548662",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "description": "Boneless Meat purchase payment",
+      "entryType": "PAYMENT",
+      "amount": 12000,
+      "notes": "",
+      "entryDate": "2026-04-13T11:29:37.118Z",
+      "createdAt": "2026-04-13T11:29:37.118Z",
+      "updatedAt": "2026-04-13T11:29:37.118Z"
+    },
+    {
+      "id": "18a29a8c-f525-4bfa-acd3-756e93d9157f",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "description": "Live Chicken purchase",
+      "entryType": "PURCHASE",
+      "amount": 14400,
+      "notes": "",
+      "entryDate": "2026-04-13T10:57:21.990Z",
+      "createdAt": "2026-04-13T10:57:21.990Z",
+      "updatedAt": "2026-04-13T10:57:21.990Z"
+    },
+    {
+      "id": "a90db4ba-2d05-480f-8876-f29e55e94997",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "description": "Live Chicken purchase payment",
+      "entryType": "PAYMENT",
+      "amount": 12000,
+      "notes": "",
+      "entryDate": "2026-04-13T10:57:21.990Z",
+      "createdAt": "2026-04-13T10:57:21.990Z",
+      "updatedAt": "2026-04-13T10:57:21.990Z"
+    },
+    {
+      "id": "09206b6a-66d4-4b89-9f46-cb0d2ff94204",
+      "vendorId": "3f722872-600f-4b11-8fc7-234d984651e4",
+      "description": "payment",
+      "entryType": "PAYMENT",
+      "amount": 100,
+      "notes": "",
+      "entryDate": "2026-04-13T08:39:18.052Z",
+      "createdAt": "2026-04-13T08:39:18.052Z",
+      "updatedAt": "2026-04-13T08:39:18.052Z"
+    }
+  ]
+}
