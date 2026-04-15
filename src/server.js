@@ -14,6 +14,10 @@ const port = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
 
+app.get('/', (_req, res) => {
+  res.send('API is running')
+})
+
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', message: 'Ansir Chicken backend is running.' })
 })
