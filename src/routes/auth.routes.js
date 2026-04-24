@@ -7,7 +7,7 @@ const router = Router()
 
 router.post('/signup', async (req, res, next) => {
   try {
-    const { name, email, password, role = 'STAFF_USER' } = req.body
+    const { name, email, password } = req.body
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'Name, email, and password are required.' })
@@ -26,12 +26,11 @@ router.post('/signup', async (req, res, next) => {
         name,
         email,
         passwordHash,
-        role,
       },
     })
 
     const token = jwt.sign(
-      { sub: user.id, email: user.email, role: user.role },
+      { sub: user.id, email: user.email },
       process.env.JWT_SECRET,
       { expiresIn: '7d' },
     )
@@ -42,7 +41,6 @@ router.post('/signup', async (req, res, next) => {
         id: user.id,
         name: user.name,
         email: user.email,
-        role: user.role,
       },
     })
   } catch (error) {
@@ -71,7 +69,7 @@ router.post('/signin', async (req, res, next) => {
     }
 
     const token = jwt.sign(
-      { sub: user.id, email: user.email, role: user.role },
+      { sub: user.id, email: user.email },
       process.env.JWT_SECRET,
       { expiresIn: '7d' },
     )
@@ -82,7 +80,6 @@ router.post('/signin', async (req, res, next) => {
         id: user.id,
         name: user.name,
         email: user.email,
-        role: user.role,
       },
     })
   } catch (error) {
