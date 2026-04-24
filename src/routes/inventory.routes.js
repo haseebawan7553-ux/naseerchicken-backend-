@@ -1,13 +1,28 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import { randomUUID } from 'crypto'
-import { dirname } from 'path'
+import os from 'os'
+import { dirname, join, resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { Router } from 'express'
 import { buildVendorNameList, ensureVendorExists, readVendorStore } from '../lib/vendor-store.js'
 
 const router = Router()
-const inventoryFileUrl = new URL('../../data/inventory.json', import.meta.url)
-const inventoryFilePath = fileURLToPath(inventoryFileUrl)
+function resolveDataDirectory() {
+  const explicitDir = String(process.env.DATA_DIR ?? '').trim()
+
+  if (explicitDir) {
+    return resolve(explicitDir)
+  }
+
+  if (process.env.RENDER) {
+    return join(os.tmpdir(), 'naseer-chicken-data')
+  }
+
+  const localDataDirUrl = new URL('../../data', import.meta.url)
+  return fileURLToPath(localDataDirUrl)
+}
+
+const inventoryFilePath = join(resolveDataDirectory(), 'inventory.json')
 
 function defaultInventoryStore() {
   return {
@@ -58,8 +73,15 @@ async function ensureInventoryFile() {
 async function readInventoryStore() {
   await ensureInventoryFile()
 
-  const raw = await readFile(inventoryFilePath, 'utf8')
-  const parsed = JSON.parse(raw)
+  let parsed
+
+  try {
+    const raw = await readFile(inventoryFilePath, 'utf8')
+    parsed = JSON.parse(raw)
+  } catch {
+    parsed = defaultInventoryStore()
+    await writeFile(inventoryFilePath, JSON.stringify(parsed, null, 2))
+  }
 
   return {
     records: {

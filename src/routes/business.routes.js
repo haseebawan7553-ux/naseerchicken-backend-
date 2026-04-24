@@ -140,12 +140,12 @@ function buildWasteSummary(purchaseRecords, saleRecords) {
 }
 
 function buildReports(store, customerPayload, vendorPayload) {
-  const purchaseSummary = buildPurchaseSummary(store.purchases)
-  const salesSummary = buildSalesSummary(store.sales)
-  const wasteSummary = buildWasteSummary(store.wastePurchases, store.wasteSales)
-  const expenseSummary = buildExpenseSummary(store.expenses)
-  const ratesSummary = buildRatesSummary(store.rates)
-  const workerSummary = buildWorkerSummary(store.workers)
+  const purchaseSummary = buildPurchaseSummary(store.purchases ?? [])
+  const salesSummary = buildSalesSummary(store.sales ?? [])
+  const wasteSummary = buildWasteSummary(store.wastePurchases ?? [], store.wasteSales ?? [])
+  const expenseSummary = buildExpenseSummary(store.expenses ?? [])
+  const ratesSummary = buildRatesSummary(store.rates ?? [])
+  const workerSummary = buildWorkerSummary(store.workers ?? [])
   const totalPurchaseAmount = purchaseSummary.totalAmount + wasteSummary.totalPurchaseAmount
   const totalSalesAmount = salesSummary.totalAmount + wasteSummary.totalSaleAmount
   const grossBalance = totalSalesAmount - totalPurchaseAmount - expenseSummary.totalAmount
@@ -236,6 +236,8 @@ async function buildPayload() {
         {
           purchases,
           sales,
+          wastePurchases,
+          wasteSales,
           rates,
           expenses,
           workers,

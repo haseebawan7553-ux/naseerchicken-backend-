@@ -1,9 +1,24 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import { dirname } from 'path'
+import os from 'os'
+import { dirname, join, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
-const businessFileUrl = new URL('../../data/business.json', import.meta.url)
-const businessFilePath = fileURLToPath(businessFileUrl)
+function resolveDataDirectory() {
+  const explicitDir = String(process.env.DATA_DIR ?? '').trim()
+
+  if (explicitDir) {
+    return resolve(explicitDir)
+  }
+
+  if (process.env.RENDER) {
+    return join(os.tmpdir(), 'naseer-chicken-data')
+  }
+
+  const localDataDirUrl = new URL('../../data', import.meta.url)
+  return fileURLToPath(localDataDirUrl)
+}
+
+const businessFilePath = join(resolveDataDirectory(), 'business.json')
 
 function defaultBusinessStore() {
   return {
@@ -35,8 +50,15 @@ export async function ensureBusinessFile() {
 export async function readBusinessStore() {
   await ensureBusinessFile()
 
-  const raw = await readFile(businessFilePath, 'utf8')
-  const parsed = JSON.parse(raw)
+  let parsed
+
+  try {
+    const raw = await readFile(businessFilePath, 'utf8')
+    parsed = JSON.parse(raw)
+  } catch {
+    parsed = defaultBusinessStore()
+    await writeFile(businessFilePath, JSON.stringify(parsed, null, 2))
+  }
 
   return {
     purchases: Array.isArray(parsed.purchases) ? parsed.purchases : [],
