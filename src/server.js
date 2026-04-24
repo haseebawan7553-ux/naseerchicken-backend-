@@ -8,6 +8,7 @@ import inventoryRoutes from './routes/inventory.routes.js'
 import vendorRoutes from './routes/vendor.routes.js'
 import { errorHandler } from './middleware/error-handler.js'
 import { requireAuth } from './middleware/require-auth.js'
+import { ensureAuthSchema } from './lib/ensure-auth-schema.js'
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -30,6 +31,17 @@ app.use('/api/inventory', requireAuth, inventoryRoutes)
 app.use('/api/vendors', requireAuth, vendorRoutes)
 app.use(errorHandler)
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`)
-})
+async function startServer() {
+  try {
+    await ensureAuthSchema()
+
+    app.listen(port, () => {
+      console.log(`Server running on http://localhost:${port}`)
+    })
+  } catch (error) {
+    console.error('Server startup failed:', error)
+    process.exit(1)
+  }
+}
+
+startServer()
