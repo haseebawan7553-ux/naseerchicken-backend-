@@ -7,6 +7,7 @@ import customerRoutes from './routes/customer.routes.js'
 import inventoryRoutes from './routes/inventory.routes.js'
 import vendorRoutes from './routes/vendor.routes.js'
 import { errorHandler } from './middleware/error-handler.js'
+import { requireAuth } from './middleware/require-auth.js'
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -23,10 +24,10 @@ app.get('/api/health', (_req, res) => {
 })
 
 app.use('/api/auth', authRoutes)
-app.use('/api/business', businessRoutes)
-app.use('/api/customers', customerRoutes)
-app.use('/api/inventory', inventoryRoutes)
-app.use('/api/vendors', vendorRoutes)
+app.use('/api/business', requireAuth, businessRoutes)
+app.use('/api/customers', requireAuth, customerRoutes)
+app.use('/api/inventory', requireAuth, inventoryRoutes)
+app.use('/api/vendors', requireAuth, vendorRoutes)
 app.use(errorHandler)
 
 app.listen(port, () => {
